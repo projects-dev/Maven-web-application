@@ -1,3 +1,7 @@
+#!groovy
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3'))])
+
+
 node('master'){
     def ant=tool name : 'ANT_HOME',type:'ant'
     stage ('checkout the code'){
