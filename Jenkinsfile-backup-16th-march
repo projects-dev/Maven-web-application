@@ -1,4 +1,4 @@
-node('master'){
+node{
     def maven - tool name : 'MAVEN_HOME' , type : 'maven'
     stage('checkout code'){
         git credentialsId: '6396ccd2-24cf-4898-b2dd-ed7c7c2f1c18', url: 'https://github.com/projects-dev/Maven-web-application.git'
