@@ -1,12 +1,17 @@
-node{
-    def maven - tool name : 'MAVEN_HOME' , type : 'maven'
-    stage('checkout code'){
-        git credentialsId: '6396ccd2-24cf-4898-b2dd-ed7c7c2f1c18', url: 'https://github.com/projects-dev/Maven-web-application.git'
+#!groovy
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3'))])
+
+
+
+node('master'){
+    def ant=tool name : 'ANT_HOME',type:'ant'
+    stage ('checkout the code'){
+        git credentialsId: '6396ccd2-24cf-4898-b2dd-ed7c7c2f1c18', url: 'https://github.com/projects-dev/ant-standalone-application.git'
     }
-    stage('build'){
-        sh '${maven}/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/MVN_HOME/bin/maven clean package'
+    stage ('build'){
+        sh '${ant}/var/lib/jenkins/tools/hudson.tasks.Ant_AntInstallation/ANT_HOME/bin/ant'
     }
     stage('deploy to tomcat'){
-        sh'cp $/var/lib/jenkins/workspace/maven-web-pipeline/target/*.war /opt/apache-tomcat-9.0.16/webapps'
+        sh 'cp /var/lib/jenkins/workspace/maven-web-pipeline/target/*.war /opt/apache-tomcat-9.0.16/webapps'
     }
 }
