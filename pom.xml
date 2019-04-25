@@ -98,6 +98,15 @@
 	      <url>http://ec2-13-127-242-37.ap-south-1.compute.amazonaws.com:8081/repository/maven-snapshots/</url>
 	    </snapshotRepository>
 	</distributionManagement>
+
+	<repositories>
+         <repository>
+          <id>nexus</id>
+           <name>group</name>
+             <url>http://ec2-13-58-60-85.us-east-2.compute.amazonaws.com:8081/repository/mvn-group/</url>
+         </repository>
+        </repositories>
+
 	
 	<build>
 		<finalName>maven-web-application</finalName>
