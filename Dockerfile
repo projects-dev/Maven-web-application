@@ -1,2 +1,2 @@
 From tomcat:latest
-COPY build/libs/mvn-web-app.war /usr/local/tomcat/webapps/mvn-web-app.war
+COPY build/libs/maven-web-application.war  /usr/local/tomcat/webapps/maven-web-application.war 
